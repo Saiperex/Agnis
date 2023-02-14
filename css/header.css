@@ -1,0 +1,58 @@
+@font-face {
+    font-family: Anson-R3;
+    src: url("../fonts/Anson-R3.otf");
+}
+@font-face {
+    font-family: GENUINE;
+    src: url("../fonts/GENUINE.ttf");
+}
+@font-face {
+    font-family:CROOKED-Bold ;
+    src: url("../fonts/CROOKED-Bold.ttf");
+}
+.cabecera
+{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+}
+.centrar
+{
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+}
+.titulo
+{
+    width: 40%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Anson-R3;
+    font-size: 3vh;
+}
+.menu
+{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
+.item
+{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    padding-bottom: 10px;
+    align-items: flex-end;
+    justify-content: center;
+    color: #ffffff;
+    transition:background-color 1s ease-in-out;
+    font-family: GENUINE;
+}
+.item:hover
+{
+    background-color: #FF4900;
+}
