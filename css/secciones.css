@@ -1,0 +1,15 @@
+.seccion
+{
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.seccion-cont
+{
+    width: 95%;
+    height: 95%;
+    background-color: rgba(66, 66, 66, 0.2);
+    border-radius: 20px;
+}

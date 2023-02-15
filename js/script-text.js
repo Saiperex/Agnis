@@ -1,4 +1,4 @@
-const letra =document.getElementById("letra");
+const letra =document.getElementById("letras");
 const fuentes=["Anson-R3","GENUINE","CROOKED-Bold"];
 var index=0;
 function cambioFuente ()

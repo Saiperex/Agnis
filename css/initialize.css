@@ -11,4 +11,10 @@ body
     width: 100vw;
     height: 100vh;
     background-color: #0e0e0e;
+    overflow: hidden;
+}
+.particles-js-canvas-el
+{
+    position: absolute;
+    z-index: -1;
 }
