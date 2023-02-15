@@ -1,3 +1,15 @@
+@font-face {
+    font-family: Anson-R3;
+    src: url("../fonts/Anson-R3.otf");
+}
+@font-face {
+    font-family: GENUINE;
+    src: url("../fonts/GENUINE.ttf");
+}
+@font-face {
+    font-family:CROOKED-Bold ;
+    src: url("../fonts/CROOKED-Bold.ttf");
+}
 .seccion
 {
     width: 100vw;
@@ -12,4 +24,107 @@
     height: 95%;
     background-color: rgba(66, 66, 66, 0.2);
     border-radius: 20px;
+}
+/* seccion acerca */
+.cont-inicio
+{
+    display: flex;
+}
+.cont
+{
+    width: 50%;
+    height: 100%;
+}
+.cont_text
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cont_text-centrar
+{
+    width: 80%;
+    height: 60%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.cont_text-centrar span
+{
+    display: block;
+    font-family: monospace;
+    white-space: nowrap;
+    border-right: 4px solid;
+    width: 33ch;
+    animation: typing 2s steps(33),blink .5s infinite step-end alternate ;
+    overflow: hidden;
+    font-size: 15px;
+}
+@keyframes typing 
+{
+    from
+    {
+        width: 0;
+    }
+}
+@keyframes blink 
+{
+    50%
+    {
+        border-color: transparent;
+    }    
+}
+.cont_text-centrar h2
+{
+    font-size: 70px;
+    background-color: #FF4900;
+    margin-bottom: 20px;
+    font-family: Anson-R3;
+    text-align: center;
+}
+.cont_text-centrar legend
+{
+    font-size: 20px;
+    font-family: GENUINE;
+}
+.cont_text-centrar button
+{
+    padding: 25px;
+    margin-right: 20px;
+    color: #ffffff;
+    font-family: GENUINE;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.btna
+{
+    background-color: #FF4900;
+}
+.btnb
+{
+    background-color: transparent;
+    border-color: #ffffff;
+    transition: background-color 500ms ease-in-out,
+    color 500ms ease-in-out
+    ;
+}
+.btnb:hover
+{
+    box-shadow:
+    0px 0px 5px 0px #ffffff,
+    0px 0px 10px 0px #ffffff,
+    0px 0px 15px 0px #ffffff
+    ;
+    background-color: #ffffff;
+    color: #000000;
+}
+.spantext
+{
+    width: 40ch;
+    background-color: #000000;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
