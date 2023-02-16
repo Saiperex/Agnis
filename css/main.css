@@ -3,4 +3,5 @@
     width: 500%;
     height: 90vh;
     display: flex;
+    transition: margin-left 500ms ease-in-out;
 }
