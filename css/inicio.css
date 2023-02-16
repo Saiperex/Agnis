@@ -128,11 +128,12 @@
     display: flex;
     justify-content: space-between;
     font-size: 8vh;
+    overflow: hidden;
 }
 .img-letras ul
 {
     height: 100%;
-    overflow: hidden;
+    animation: slide 10s infinite ease-out;
 }
 .img-letras p
 {
@@ -152,4 +153,49 @@
     {
         color: #ffffff;
     }  
+}
+.img-letras li
+{
+    height: 100%;
+    text-align: center;
+}
+
+@keyframes slide 
+{
+    /*img1*/
+    0%
+    {
+        margin-top:  0ch;
+    } 
+    20%
+    {
+        margin-top: 0ch;
+    }   
+    /*img2*/
+    25%
+    {
+        margin-top:  -2.5ch;
+    } 
+    45%
+    {
+        margin-top: -2.5ch;
+    }   
+    /*img3*/
+    50%
+    {
+        margin-top:  -5ch;
+    } 
+    70%
+    {
+        margin-top: -5ch;
+    }   
+    /*img4*/
+    75%
+    {
+        margin-top:  -7.5ch;
+    } 
+    95%
+    {
+        margin-top: -7.5ch;
+    }   
 }
