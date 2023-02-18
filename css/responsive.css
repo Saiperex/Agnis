@@ -1,0 +1,42 @@
+@media screen and (max-width: 415px)
+{
+    /*inicio*/
+    .cont-inicio
+    {
+        flex-direction: column;
+    }
+    .cont
+    {
+        width: 100%;
+        height: 50%;
+    }
+    .cont_text-centrar
+    {
+        width: 90%;
+        height: 100%;
+    }
+    .cont_text-centrar h2
+    {
+        font-size: 40px;
+        text-align: start;
+        font-weight: normal;
+    }
+    .cont_text-centrar button
+    {
+        padding: 10px;
+    }
+    .spantext
+    {
+        display: none;
+    }
+    .btna
+    {
+        border: none;
+    }
+    /*fin inicio*/
+    /*Menu*/
+    .centrar
+    {
+        width: 95%;
+    }
+}
