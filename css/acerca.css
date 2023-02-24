@@ -1,6 +1,95 @@
 .cont-acerca
 {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: "imagenes textos";
+    color: white;
+}
+/*imagenes*/
+.acerca_imagenes
+{
+    grid-area: imagenes;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
+}
+.img-conteiner
+{
+    width: 60%;
+    height: 60%;
+    display:grid;
+    grid-gap: 1vh;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows:repeat(2,1fr);
+    transform: rotate(45deg);
+    grid-template-areas: "one two" "three four";
+}
+.acerca-img
+{
+    overflow: hidden;
+    transition: background-color 500ms ease-in-out,box-shadow 500ms ease-in-out;
+}
+.acerca_imagen
+{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: rotate(-45deg);
+    transition: box-shadow 500ms ease-in-out;
+}
+.one
+{
+    grid-area: one;
+    
+}
+.one div
+{background-image: url(../img/pixels1.jpg);}
+.two
+{
+    grid-area: two;
+}
+.two div
+{background-image: url(../img/pixels2.jpg);}
+.three
+{
+    grid-area: three;
+}
+.three div
+{background-image: url(../img/pixels3.jpg);}
+.four
+{
+    grid-area: four;
+}
+.four div
+{background-image: url(../img/pixels4.jpg);}
+/*texto*/
+.acerca_textos
+{
+    grid-area: textos;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.titulo_subrayado
+{
+    width: 100%;
+    font-family: Anson-R3;
+    font-size: 9vh;
+    font-weight: lighter;
+}
+.subrayado
+{
+    width: 0;
+    height: 2px;
+    background-color: white;
+    box-shadow: 0px 0px 20px 2.5px rgb(207, 96, 32),0px 0px 20px 5px rgb(207, 96, 32),0px 0px 20px 7.5px rgb(207, 96, 32);
+    transition: width 500ms ease-in-out;
+}
+.acerca_textos p
+{
+    width: 80%;
+    font-size: 2.5vh;
+    text-align: justify;
 }
