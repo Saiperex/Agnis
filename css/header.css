@@ -58,3 +58,8 @@
 {
     background-color: #FF4900;
 }
+/*btn-menu*/
+.btn-menu
+{
+    display: none;
+}

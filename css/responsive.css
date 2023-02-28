@@ -39,4 +39,12 @@
     {
         width: 95%;
     }
+    .menu
+    {
+        display: none;
+    }
+    .btn-menu
+    {
+        display: flex;
+    }
 }
