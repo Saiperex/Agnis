@@ -47,4 +47,23 @@
     {
         display: flex;
     }
+    /*Sobre nosotros*/
+    .cont-acerca
+    {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: "textos" "textos";
+    }
+    .acerca_imagenes
+    {
+        display: none;
+    }
+    .titulo_subrayado
+    {
+        font-size: 5vh;
+    }
+    .titulo_subrayado h2 
+    {
+        font-weight: lighter;
+    }
 }
