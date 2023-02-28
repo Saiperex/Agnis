@@ -66,4 +66,8 @@
     {
         font-weight: lighter;
     }
+    .acerca_textos p 
+    {
+        width: 90%;
+    }
 }
