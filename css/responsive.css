@@ -60,7 +60,8 @@
     }
     .titulo_subrayado
     {
-        font-size: 5vh;
+        font-size: 4.7vh;
+    
     }
     .titulo_subrayado h2 
     {
@@ -69,5 +70,39 @@
     .acerca_textos p 
     {
         width: 90%;
+    }
+    /*Proyectos*/
+    .proyectos-cont
+    {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(2,1fr);
+        grid-template-areas: "imagenes" "textos";
+    }
+    .mancha
+    {
+        height: 80%;
+        width: 80%;
+    }
+    .mancha4
+    {
+        width: 70vw;
+        height: 70vw;
+    }
+    .titulo_proyecto
+    {
+        font-size: 3vh;
+    }
+    .descripcion_proyecto
+    {
+        font-size: 2vh;
+    }
+    .button-conteiner
+    {
+        align-items: center;
+    }
+    .button-conteiner button 
+    {
+        text-align: center;
+        font-size: 5vh;
     }
 }

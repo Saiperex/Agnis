@@ -18,8 +18,8 @@
 }
 .mancha
 {
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
     position: absolute;
     background-color: orangered;
 }
@@ -66,4 +66,65 @@
     background-position: center;
     background-color: transparent;
     transition: background-image 500ms ease-in-out;
+}
+/*textos*/
+.proyectos-textos
+{
+    display: grid;
+    grid-template-rows: 70% 30%;
+    grid-template-areas: "t2" "b";
+    color: #ffffff;
+}
+.titulo_proyecto
+{
+    text-align: left;
+    font-family:GENUINE ;
+    font-size: 5vh;
+}
+.descripcion_proyecto
+{
+    font-size: 2.5vh;
+}
+.textos-conteiner
+{
+    grid-area: t2;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 95%;
+    justify-self: center;
+    align-self:center ;
+    text-align: justify;
+    justify-content: center;
+}
+.button-conteiner
+{
+    grid-area: b;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.button-conteiner button 
+{
+    width: 50%;
+    height: 50%;
+    font-family: Anson-R3;
+    font-size: 10vh;
+    border: none;
+    border: transparent 1px solid;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #ffffff;
+    box-shadow: none;
+    transition: color 500ms ease-in-out, box-shadow 500ms ease-in-out,border-color 500ms ease-in-out,text-shadow 500ms ease-in-out;
+}
+.button-conteiner button:hover
+{
+    border-color: #ffffff;
+    color: #000000;
+    text-shadow: 0px 0px 10px rgb(255, 69, 0),0px 0px 15px rgb(255, 69, 0),0px 0px 20px rgb(255, 69, 0);
+    box-shadow: 0px 0px 10px rgb(255, 69, 0),0px 0px 15px rgb(255, 69, 0),0px 0px 20px rgb(255, 69, 0),
+    inset 0px 0px 10px rgb(255, 69, 0), inset 0px 0px 15px rgb(255, 69, 0), inset 0px 0px 20px rgb(255, 69, 0)
+    ;
 }
