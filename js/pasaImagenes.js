@@ -1,4 +1,4 @@
-var url=["/img/aa.png", "/img/as.png", "/img/ud.png", "/img/ur.png", "/img/ze.png"]
+var url=["../img/aa.png", "../img/as.png", "../img/ud.png", "../img/ur.png", "../img/ze.png"]
 const conteinerImgUrl=document.querySelector(".mancha4")
 const titulo=document.querySelector(".titulo_proyecto")
 const descripcion=document.querySelector(".descripcion_proyecto")
