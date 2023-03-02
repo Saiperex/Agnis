@@ -1,5 +1,9 @@
 @media screen and (max-width: 415px)
 {
+    .seccion 
+    {
+        height: 90%;
+    }
     /*inicio*/
     .cont-inicio
     {
@@ -70,6 +74,7 @@
     .acerca_textos p 
     {
         width: 90%;
+        font-size: 2vh;
     }
     /*Proyectos*/
     .proyectos-cont
@@ -90,7 +95,7 @@
     }
     .titulo_proyecto
     {
-        font-size: 3vh;
+        font-size: 2.5vh;
     }
     .descripcion_proyecto
     {
