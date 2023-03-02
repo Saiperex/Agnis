@@ -30,7 +30,8 @@ function cambiarImagen()
 { 
     titulo.innerHTML="PROYECTO: "+jsonPortfolioData[index].nombre;
     descripcion.innerHTML=jsonPortfolioData[index].descripcion;
-    conteinerImgUrl.style.backgroundImage = `url(${url[index]})`;
+    url
+    conteinerImgUrl.style.backgroundImage = `url(`+url[index]+ `)`;
     if(index<url.length-1)
     {
         index=index+1
