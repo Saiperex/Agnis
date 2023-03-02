@@ -1,4 +1,4 @@
-var url=["../img/aa.png", "../img/as.png", "../img/ud.png", "../img/ur.png", "../img/ze.png"]
+var url=["/img/aa.png", "/img/as.png", "/img/ud.png", "/img/ur.png", "/img/ze.png"]
 const conteinerImgUrl=document.querySelector(".mancha4")
 const titulo=document.querySelector(".titulo_proyecto")
 const descripcion=document.querySelector(".descripcion_proyecto")
@@ -30,9 +30,7 @@ function cambiarImagen()
 { 
     titulo.innerHTML="PROYECTO: "+jsonPortfolioData[index].nombre;
     descripcion.innerHTML=jsonPortfolioData[index].descripcion;
-    url
-    conteinerImgUrl.style.backgroundImage = `url(`+url[index]+ `)`;
-    
+    conteinerImgUrl.style.backgroundImage = "url('" + url[index] + "')";
     if(index<url.length-1)
     {
         index=index+1
