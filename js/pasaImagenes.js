@@ -32,6 +32,7 @@ function cambiarImagen()
     descripcion.innerHTML=jsonPortfolioData[index].descripcion;
     url
     conteinerImgUrl.style.backgroundImage = `url(`+url[index]+ `)`;
+    
     if(index<url.length-1)
     {
         index=index+1
