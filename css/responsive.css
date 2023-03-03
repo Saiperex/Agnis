@@ -110,4 +110,31 @@
         text-align: center;
         font-size: 5vh;
     }
+    /*servicios*/
+    .cont_cards
+    {
+        width: 98%;
+        height: 98%;
+        flex-direction: column;
+    }
+    .servicio-card
+     {
+        width: 100%;
+        height: 30%;
+     }
+     .servicio-card i
+     {
+        margin: 5px 0;
+     }
+     .servicio-card h3 
+     {
+        margin: 5px 0;
+     }
+     .servicio-card p
+    {
+        padding: 0 10px;
+        font-family: GENUINE;
+        font-size: 1.2vh;
+        height: 40%;
+    }
 }
