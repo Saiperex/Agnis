@@ -18,36 +18,26 @@ inicio2.addEventListener("click", function ()
 {
     console.log("inicio")
     principal2.style.marginLeft="0%"
-    izquierda="50vw"
-    panel.style.left=izquierda
 })
 acerca2.addEventListener("click", function () 
 {
     console.log("acerca")
     principal2.style.marginLeft="-100%"
-    izquierda="150vw"
-    panel.style.left=izquierda
 })
 proyectos2.addEventListener("click", function () 
 {
     console.log("proyectos")
     principal2.style.marginLeft="-200%"
-    izquierda="250vw"
-    panel.style.left=izquierda
 })
 servicios2.addEventListener("click", function () 
 {
     console.log("servicios")
     principal2.style.marginLeft="-300%"
-    izquierda="350vw"
-    panel.style.left=izquierda
 })
 contacto2.addEventListener("click", function () 
 {
     console.log("contacto")
     principal2.style.marginLeft="-400%"
-    izquierda="450vw"
-    panel.style.left=izquierda
 })
 function validar()
 {
