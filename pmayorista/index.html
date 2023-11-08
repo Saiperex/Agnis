@@ -1,181 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <link rel="shortcut icon" href="img/ico.png" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Referencia a la hoja de estilos de Handsontable -->
+    <title>Cruce de Datos y Handsontable</title>
     <link rel="stylesheet" href="node_modules/handsontable/dist/handsontable.full.css">
-    <title>Procesamiento de Datos</title>
-</head>
-
-<body>
-    <h1>Sistema de procesamiento de Datos</h1>
-    <input type="file" id="file-input" accept=".xlsx, .csv">
-    <div id="hot-container"></div>
-
-    <!-- Agrega el filtro de búsqueda -->
-    <div class="search-filter">
-        <input type="text" id="search-term" placeholder="Ingrese el término de búsqueda">
-        <select id="search-location">
-            <option value="search-all">Buscar en toda la hoja de cálculo</option>
-            <option value="search-column">Buscar en columna seleccionada</option>
-        </select>
-        <select id="search-column" disabled> <!-- Nuevo select para elegir columna -->
-            <!-- Las opciones se generarán dinámicamente al cargar el archivo -->
-        </select>
-        <button id="search-button">Buscar</button>
-    </div>
-
-    <!-- Visualización de resultados -->
-    <div id="search-results-container"></div>
-    <button id="export-button">Exportar a XLSX</button>
-    <!-- Referencia a Handsontable -->
     <script src="node_modules/handsontable/dist/handsontable.full.js"></script>
-
-    <!-- Referencia a XLSX (SheetJS) -->
     <script src="node_modules/xlsx/xlsx.js"></script>
+</head>
+<body>
+    <input type="file" id="archivo" accept=".xlsx" />
+    <button id="cargarBtn">Cargar Hoja de Cálculo</button>
+    <button id="descargarBtn" style="display: none;">Descargar Archivo Modificado</button>
+    <div id="handsontable"></div>
 
     <script>
-        const fileInput = document.getElementById('file-input');
-        const hotContainer = document.getElementById('hot-container');
-        const searchTermInput = document.getElementById('search-term');
-        const searchLocationSelect = document.getElementById('search-location');
-        const searchColumnSelect = document.getElementById('search-column');
-        const searchButton = document.getElementById('search-button');
-        const searchResultsContainer = document.getElementById('search-results-container');
-        let hot;
+        let datos;
+        var hot=null;
+        const propToIndex = {
+            "Artículo": 0,
+            "Descripción": 1,
+            "UOM": 2,
+            "Cantidad por paquete": 3,
+            "Esperado": 4,
+            "Recibido": 5,
+            "Dañado": 6,
+            "Fuera de Stock": 7
+        };
+        
+        document.getElementById('archivo').addEventListener('change', function (e) {
+            const archivo = e.target.files[0];
+            const reader = new FileReader();
 
-        fileInput.addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const fileData = e.target.result;
+            reader.onload = function (e) {
+                const data = e.target.result;
+                const workbook = XLSX.read(data, { type: 'array' });
+                const firstSheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[firstSheetName];
+                datos = XLSX.utils.sheet_to_json(worksheet);
+            };
 
-                    // Configura las opciones, incluyendo la clave de licencia
-                    const settings = {
-                        licenseKey: 'non-commercial-and-evaluation',
-                        // ... otras opciones
-                    };
-
-                    const options = Object.assign({}, settings, {
-                        data: parseFileData(fileData),
-                        colHeaders: true,
-                        rowHeaders: true,
-                        contextMenu: true,
-                        afterChange: function (changes, source) {
-                            // Puedes agregar aquí la lógica para guardar los cambios si es necesario
-                        }
-                    });
-                    hot = new Handsontable(hotContainer, options);
-
-                    // Genera las opciones del select de columnas
-                    generateColumnOptions();
-                };
-                reader.readAsBinaryString(file);
-            }
+            reader.readAsArrayBuffer(archivo);
         });
 
-        function parseFileData(fileData) {
-            const workbook = XLSX.read(fileData, { type: 'binary' });
-            const sheet = workbook.Sheets[workbook.SheetNames[0]];
-            return XLSX.utils.sheet_to_json(sheet, { header: 1 });
-        }
-
-        function generateColumnOptions() {
-            const columnSelect = document.getElementById('search-column');
-            columnSelect.innerHTML = ""; // Limpia las opciones anteriores
-
-            hot.getColHeader().forEach((header, index) => {
-                const option = document.createElement('option');
-                option.value = index;
-                option.text = header;
-                columnSelect.appendChild(option);
+        function mostrarDatosEnHandsontable(datos) {
+            const container = document.getElementById('handsontable');
+             hot = new Handsontable(container, {
+                data: datos,
+                colHeaders: ["Artículo", "Descripción", "UOM", "Cantidad por paquete", "Esperado", "Recibido", "Dañado", "Fuera de Stock"],
+                rowHeaders: true,
+                columnSorting: true,
+                licenseKey: 'non-commercial-and-evaluation',
             });
 
-            // Habilita el select de columnas
-            columnSelect.disabled = false;
+            hot.addHook('afterChange', function (changes) {
+                // El evento afterChange se activa cuando se realizan cambios en Handsontable
+                changes.forEach(function (change) {
+                    // change contiene [row, prop, oldVal, newVal]
+                    // Actualiza los datos originales con los cambios
+                    datos[change[0]][propToIndex[change[1]]] = change[3];
+                });
+            });
         }
 
-        // Lógica de búsqueda
-        searchButton.addEventListener('click', function () {
-            const searchTerm = searchTermInput.value;
-            const searchLocation = searchLocationSelect.value;
-            const searchColumn = searchColumnSelect.value;
-            const data = hot.getData();
-            const results = [];
-
-            // Lógica de búsqueda según la ubicación seleccionada
-            if (searchLocation === 'search-all') {
-                for (let row = 0; row < data.length; row++) {
-                    for (let col = 0; col < data[row].length; col++) {
-                        if (data[row][col] && data[row][col].toString().includes(searchTerm)) {
-                            results.push(data[row]);
-                            break; // Evita duplicados de la misma fila
-                        }
-                    }
-                }
-            } else if (searchLocation === 'search-column') {
-                for (let row = 0; row < data.length; row++) {
-                    if (data[row][searchColumn] && data[row][searchColumn].toString().includes(searchTerm)) {
-                        results.push(data[row]);
-                    }
-                }
+        document.getElementById('cargarBtn').addEventListener('click', function () {
+            if (datos) {
+                // Elimina las filas de la 1 a la 15 y las que contienen "Container ID" o "Estado"
+                datos = eliminarFilasIndeseadas(datos);
+                mostrarDatosEnHandsontable(datos);
+                document.getElementById('descargarBtn').style.display = 'block';
             }
-
-            // Muestra los resultados en un nuevo Handsontable debajo del control de búsqueda
-            displayResults(results);
         });
-        const exportButton = document.getElementById('export-button');
-        function displayResults(results) {
-            searchResultsContainer.innerHTML = ""; // Limpia resultados anteriores
-            if (results.length > 0) {
-                const container = document.createElement('div');
-                const resultsContainer = document.createElement('div');
-                container.style.width = '100%';
-                resultsContainer.style.width = '100%';
-                container.appendChild(resultsContainer);
-                searchResultsContainer.appendChild(container);
 
-                const data = [];
-                const colHeaders = [];
-
-                for (let col = 0; col < results[0].length; col++) {
-                    colHeaders.push(`Columna ${col + 1}`);
-                }
-
-                results.forEach(row => {
-                    data.push([...row]);
-                });
-
-                const resultSettings =
-                {
-                    data: data,
-                    colHeaders: colHeaders,
-                    rowHeaders: true,
-                    licenseKey: 'non-commercial-and-evaluation',
-                    contextMenu: true,
-                    columnSorting: true,
-                    headerAction: true,
-                };
-                const resultHot = new Handsontable(resultsContainer, resultSettings);
-                exportButton.addEventListener('click', function () {
-                    const exportData = resultHot.getData();
-                    const ws = XLSX.utils.aoa_to_sheet(exportData);
-                    const wb = XLSX.utils.book_new();
-                    XLSX.utils.book_append_sheet(wb, ws, "Hoja1");
-                    XLSX.writeFile(wb, "exported_data.xlsx");
-                });
-            } else {
-                searchResultsContainer.textContent = "No se encontraron resultados.";
-            }
+        function eliminarFilasIndeseadas(datos) {
+            // Filtrar las filas cuya primera columna contenga solo números
+            datos = datos.filter((fila) => {
+                const primeraColumna = fila[Object.keys(fila)[0]]; // Obtiene el valor de la primera columna
+                return !isNaN(primeraColumna); // Verifica si es un número
+            });
+            return datos;
         }
-        
 
-        
+        document.getElementById('descargarBtn').addEventListener('click', function () {
+            const datos2=hot.getData()
+            if (datos2) {
+                const nuevoWorkbook = XLSX.utils.book_new();
+                
+                // Crear una hoja de cálculo con la fila de título personalizada
+                const titulos = ["Artículo", "Descripción", "UOM", "Cantidad por paquete", "Esperado", "Recibido", "Dañado", "Fuera de Stock"];
+                const nuevaHoja = XLSX.utils.json_to_sheet([titulos], { skipHeader: true });
+                
+                // Agregar los datos debajo de la fila de título
+                XLSX.utils.sheet_add_json(nuevaHoja, datos2, { skipHeader: true, origin: 1 });
+                
+                XLSX.utils.book_append_sheet(nuevoWorkbook, nuevaHoja, "Datos Modificados");
+                XLSX.writeFile(nuevoWorkbook, "datos_modificados.xlsx");
+            }
+        });
+
     </script>
 </body>
-
 </html>
