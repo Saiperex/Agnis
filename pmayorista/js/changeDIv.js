@@ -48,3 +48,4 @@ btnAnteriorCruzado.addEventListener("click",function()
     divCruzado.style.opacity="0";
     divCruzado.style.zIndex="0";
 })
+
