@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <!---->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/ico.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/init.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <!--handsontable y xlsx-->
+    <link rel="stylesheet" href="node_modules/handsontable/dist/handsontable.full.css">
+    <script src="node_modules/handsontable/dist/handsontable.full.js"></script>
+    <script src="node_modules/xlsx/xlsx.js"></script>
+    <title>Procesamiento de Datos </title>
+</head>
+<body>
+    
+    <main class="principal">
+        <div class="saludo">
+            <h1>Sistema de procesamiento de Archivos</h1>
+            <div>
+                <h4>Acá podras:</h4>
+                <ul>
+                    <li>-Limpiar los archivos</li>
+                    <li>-Ordenarlos</li>
+                    <li>-Cruzar datos</li>
+                </ul>
+            </div>
+            <button class="comenzar">Comenzar <img src="img/ico.png" alt=""></button>
+        </div>
+        <div class="datosOracle">
+            <h2>Cargar Archivo de Oracle</h2>
+            <div>
+                <h4>Acá podras</h4>
+                <ul>
+                    <li>Cargar el Archivo</li>
+                    <li>-Limpiarlo</li>
+                    <li>-Ordenarlo</li>
+                    <li>-Descargar archivo</li>
+                </ul>
+            </div>
+            <input type="file" name="oracle" id="Oracle" accept=".xlsx">
+            <div class="oracleButtons">
+                <button class="verOracle">Ver Archivo</button>
+                <button class="siguienteOracle">Siguiente</button>
+            </div>
+        </div>
+        <div class="datosStock">
+            <h2>Cargar Archivo de Stock</h2>
+            <div>
+                <h4>Acá podras</h4>
+                <ul>
+                    <li>Cargar el Archivo</li>
+                    <li>-Ordenarlo</li>
+                    <li>-Descargar archivo</li>
+                </ul>
+            </div>
+            <input type="file" name="stock" id="Stock" accept=".xlsx">
+            <div class="stockButtons">
+                <button class="verStock">Ver Archivo</button>
+                <button class="siguienteStock">Siguiente</button>
+                <button class="anteriorStock">Anterior</button>
+            </div>
+        </div>
+        <div class="cruzarDatos">
+            <h2>Cruzar Datos</h2>
+            <div>
+                <h4>Acá podras</h4>
+                <ul>
+                    <li>Cruzar los Datos</li>
+                    <li>-Ordenarlo</li>
+                    <li>-Descargar archivo</li>
+                </ul>
+            </div>
+            <div class="stockButtons">
+                <button class="cruzar">Cruzar Datos</button>
+                <button class="verCruzado">Ver Archivo</button>
+                <button class="anteriorCruzado">Anterior</button>
+            </div>
+        </div>
+        <div class="doc1">
+            <div class="buttonsDoc1">
+                <button class="descargarDoc1">Descargar</button>
+                <button class="cerrarDoc1">Cerrar</button>
+            </div>
+        </div>
+        <div class="doc2">
+            <div class="buttonsDoc2">
+                <button class="descargarDoc2">Descargar</button>
+                <button class="cerrarDoc2">Cerrar</button>
+            </div>
+        </div>
+    </main>
+    <script src="js/changeDiv.js"></script>
+    <script src="js/hot1.js"></script>
+    <script src="js/hot2.js"></script>
+</body>
+</html>
